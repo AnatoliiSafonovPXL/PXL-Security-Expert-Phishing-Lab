@@ -1,0 +1,28 @@
+services:
+  gophish:
+    image: gophish/gophish:0.12.1
+    container_name: phishing-lab-gophish
+    ports:
+      - "3333:3333"  # Admin panel
+      - "8080:80"    # Phishing server
+    volumes:
+      - gophish-data:/opt/gophish
+    restart: unless-stopped
+    networks:
+      - phishing-lab
+
+  zphisher:
+    image: htrtech/zphisher
+    container_name: phishing-lab-zphisher
+    stdin_open: true
+    tty: true
+    networks:
+      - phishing-lab
+    command: bash
+
+networks:
+  phishing-lab:
+    driver: bridge
+
+volumes:
+  gophish-data:
