@@ -45,6 +45,24 @@ docker compose down
 5. Add target users (Users & Groups)
 6. Launch campaign (Campaigns)
 
+## Local Testing with MailHog
+
+For fully local testing without external email servers, use MailHog to catch all emails.
+
+### Configuration
+
+**SMTP Settings in Gophish:**
+- **Name**: MailHog Local
+- **Host**: mailhog:1025 (or localhost:1025 if running outside Docker)
+- **Username**: (leave empty)
+- **Password**: (leave empty)
+- **From**: test@example.com
+- **Disable TLS**
+
+**Access MailHog Web UI**: http://localhost:8025
+
+All emails sent by Gophish will be captured in MailHog instead of being sent to real addresses.
+
 ## Important
 
 - Get authorization before testing
